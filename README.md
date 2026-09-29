@@ -1,43 +1,39 @@
-# 东华招生网 · 网页作品
+# 高炜彤 · 作品集
 
-东华大学招生信息页面的网页作品 —— 内容策划、信息编排与页面更新维护。
+新媒体运营 / 视觉设计 / 游戏内容运营（实习 · 上海）· 东华大学 网络与新媒体
 
-## 这是什么
-
-一个**单文件 HTML** 招生宣传网页：整站信息集中在一个 `index.html` 里，二级页面（关于 / 学科 / 校园 / 招生 / 就业等）通过模板注入的方式切换，配合 GSAP 滚动动效完成浏览节奏。
-
-- 内容策划与信息编排：高炜彤
-- 技术：原生 HTML / CSS / JavaScript + GSAP ScrollTrigger + React 组件（CDN 引入）
-- 图片与素材：东华大学官方公开素材
-
-## 怎么打开
-
-**本地打开**
-1. 下载本仓库（或 clone）
-2. 双击 `index.html`（建议 Chrome / Edge / Safari）
-3. 注意：`index.html` 必须和 `images/`、`vendor/` 放在同一层，否则图片和动画不显示
-
-**在线预览**
-GitHub Pages 部署后可通过 `https://<用户名>.github.io/dhu-admissions-site/` 访问。
-
-## 需要联网
-
-页面引用了在线字体和 React 组件库。断网时页面仍可打开，但字体会回退为系统默认字体。
+在线地址：**https://116gwt116.github.io/gwt116/**
 
 ## 目录结构
 
 ```
-index.html    网页主文件
-images/       图片素材
-vendor/       动画库（GSAP + ScrollTrigger）
-README.md     本文件
+index.html            导览首页（作品集入口，手写 HTML/CSS）
+dhu-admissions/       项目 01 · 东华招生网（单页招生网站）
+  ├── index.html
+  ├── images/
+  └── vendor/         GSAP + ScrollTrigger
+.github/workflows/    自动发布：推 main → 同步到 gh-pages
 ```
 
-## 操作提示
+## 怎么加一个新项目
 
-- 上下滚动浏览完整页面，页面有滚动触发的动画
-- 顶部导航可进入各二级页面（关于 / 学科 / 校园 / 招生等）
+1. 在本仓库根目录新建英文名文件夹，例如 `xingyin/`
+2. 把项目文件放进去，**入口文件名必须是 `index.html`**（子目录相对路径照常写 `images/xx.png`）
+3. 在根目录 `index.html` 的作品列表里加一行（把 `plain` 行改成带 `<a href="xingyin/">` 的可点击行）
+4. 推送到 `main` 分支 —— GitHub Actions 会自动同步到发布分支，1-2 分钟后线上生效
+
+访问地址规则：`https://116gwt116.github.io/gwt116/<文件夹名>/`
+
+## 发布机制（重要）
+
+- GitHub Pages 的发布分支是 **`gh-pages`**（当初推 `gh-pages` 分支触发了自动启用）
+- 仓库根目录的 `.github/workflows/pages.yml` 会在每次推送 `main` 时，**自动把 main 同步到 gh-pages**，所以平时只需维护 `main`
+
+## 注意
+
+- **纯前端项目才能直接跑**：需要后端/服务器的项目（例如要启动 Python 服务的文字模拟器）无法在 GitHub Pages 上运行，需要导出静态版，或改放截图 / 演示视频
+- 页面尽量不依赖外部 CDN（被墙环境会掉字体/脚本）；必须依赖时写好回退
 
 ---
 
-*本仓库为个人作品集项目之一，仅用于学习与作品展示。*
+*本站为个人作品集，内容用于学习与作品展示。*

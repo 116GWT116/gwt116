@@ -1,0 +1,25 @@
+name: 发布到 gh-pages
+
+# 每次推送 main 时，把 main 的内容同步到 Pages 的发布分支 gh-pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出 main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 同步到 gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git push --force origin HEAD:gh-pages
